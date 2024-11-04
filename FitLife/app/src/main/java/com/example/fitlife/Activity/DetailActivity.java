@@ -1,5 +1,6 @@
 package com.example.fitlife.Activity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.fitlife.Model.Exercise;
@@ -21,11 +23,12 @@ public class DetailActivity extends AppCompatActivity {
     private SQLiteHelper databaseHelper;
     private ProgressBar progressBar;
     private Button skipButton;
-    private int progressStatus = 60;
+    private int progressStatus = 5;
     private boolean isRunning = false;
     private boolean isPaused = false;
     private Handler handler = new Handler();
     private Thread timerThread;
+    private int count = 2;
 
     private void bindingView(){
         nameTextView = findViewById(R.id.nameTextView);
@@ -42,10 +45,10 @@ public class DetailActivity extends AppCompatActivity {
     private void skipButtonOnClick(View view) {
         if (isRunning && !isPaused) {
             isPaused = true;
-            skipButton.setText("RESUME");
+            skipButton.setText("CONTINUE");
         } else if (isRunning) {
             isPaused = false;
-            skipButton.setText("SKIP");
+            skipButton.setText("RESUME");
             startTimer();
         }
     }
@@ -67,12 +70,14 @@ public class DetailActivity extends AppCompatActivity {
             Exercise exercise = databaseHelper.getExerciseById(exerciseId);
             if (exercise != null) {
                 nameTextView.setText(exercise.getName());
+                count = exercise.getRepeatTimes();
                 repeatTextView.setText("Repeat: " + exercise.getRepeatTimes() + " times");
                 exerciseImageView.setImageResource(exercise.getImageResId());
 
             }
         }
 
+        skipButton.setText("RESUME");
         progressBar.setMax(60);
         progressBar.setProgress(progressStatus);
         timerText.setText(progressStatus + "");
@@ -96,6 +101,7 @@ public class DetailActivity extends AppCompatActivity {
         if (!isRunning) {
             isRunning = true;
             startTimer();
+            repeatTextView.setText("Repeat: " + count + " times");
         }
 
     }
@@ -131,12 +137,47 @@ public class DetailActivity extends AppCompatActivity {
                     public void run() {
                         isRunning = false;
                         isPaused = false;
-                        skipButton.setText("SKIP");
-                        progressStatus = 60;
+                        skipButton.setText("NEXT STEP");
+                        progressStatus = 5;
+                        showCompletionDialog();
                     }
                 });
             }
         });
         timerThread.start();
+    }
+    private void showCompletionDialog() {
+        count--;
+        if (count > 0) {
+            repeatTextView.setText("Repeat: " + count + " times");
+            new AlertDialog.Builder(this)
+                    .setTitle("Congratulations !")
+                    .setMessage("Congratulations on completing the first round, take a break and continue!")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Xử lý khi người dùng nhấn OK
+                            dialog.dismiss();
+                        }
+                    })
+                    .setIcon(android.R.drawable.ic_dialog_info)
+                    .show();
+            skipButton.setText("RESUME");
+        }else {
+            repeatTextView.setText("Repeat: " + count + " times");
+            new AlertDialog.Builder(this)
+                    .setTitle("Congratulations !")
+                    .setMessage("You have finished the exercise.!")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Xử lý khi người dùng nhấn OK
+                            dialog.dismiss();
+                        }
+                    })
+                    .setIcon(android.R.drawable.ic_dialog_info)
+                    .show();
+            skipButton.setText("RESUME");
+            count = 2;
+        }
+
     }
 }
