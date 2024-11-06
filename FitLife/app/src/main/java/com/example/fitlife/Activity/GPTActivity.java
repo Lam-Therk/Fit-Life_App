@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fitlife.Adapter.ChatAdapter;
+import com.example.fitlife.MainActivity;
 import com.example.fitlife.Model.MessageModel;
 import com.example.fitlife.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
