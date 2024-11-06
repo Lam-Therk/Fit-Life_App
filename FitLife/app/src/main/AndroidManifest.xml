@@ -13,21 +13,50 @@
         android:theme="@style/Theme.FitLife"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.GPTActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.GoodBMIActivity"
-            android:exported="true" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
+            android:exported="false" />
+        <activity
+            android:name=".Activity.ExerciseScreen3"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.ExerciseScreen2"
+            android:exported="false" />
         <activity
             android:name=".Activity.BMIActivity"
-            android:exported="false"/>
+            android:exported="false" />
+        <activity
+            android:name=".Activity.ItemActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.ExerciseScreen"
+            android:exported="false" />
+        <activity
+            android:name=".Adapter.ExerciseAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Detail2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.StartActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activity.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.LoginActivity"
+            android:exported="false" />
         <activity
             android:name=".Activity.MainActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
     </application>
 
 </manifest>
