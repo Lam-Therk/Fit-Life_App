@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_work"
+        android:title="Dashboard" />
+    <item
+        android:id="@+id/bmi"
+        android:icon="@drawable/baseline_calculate_24"
+        android:title="CalculateBMI" />
+    <item android:title="Gygy Assistant"
+        android:icon="@drawable/baseline_chat_24"
+        android:id="@+id/chat_gpt"
+        />
+</menu>
