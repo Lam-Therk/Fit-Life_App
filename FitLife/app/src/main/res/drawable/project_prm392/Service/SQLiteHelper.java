@@ -115,7 +115,7 @@
 //        return exerciseIds;
 //    }
 //}
-package com.example.fitlife.Service;
+package com.example.project_prm392.Service;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -123,7 +123,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.fitlife.Model.Exercise;
+import com.example.project_prm392.Model.Exercise;
 
 import java.util.ArrayList;
 import java.util.List;
