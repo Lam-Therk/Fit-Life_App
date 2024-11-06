@@ -12,7 +12,6 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.fitlife.MainActivity;
 import com.example.fitlife.R;
 import com.example.fitlife.Service.SQLiteHelper;
 
