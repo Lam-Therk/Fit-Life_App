@@ -48,7 +48,7 @@ public class ExerciseScreen extends AppCompatActivity {
         adapter = new ExerciseAdapter(exerciseList, new ExerciseAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Exercise exercise) {
-                Intent intent = new Intent(ExerciseScreen.this, Detail2Activity.class);
+                Intent intent = new Intent(ExerciseScreen.this, DetailActivity.class);
                 intent.putExtra("exerciseId", exercise.getId());
                 startActivity(intent);
             }

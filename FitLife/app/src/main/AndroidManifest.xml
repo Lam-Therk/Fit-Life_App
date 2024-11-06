@@ -40,6 +40,9 @@
             android:name=".Activity.Detail2Activity"
             android:exported="false" />
         <activity
+            android:name=".Activity.DetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.StartActivity"
             android:exported="true">
             <intent-filter>
